@@ -62,6 +62,20 @@ zpool1/test_gzip-9  compressratio  2.67x  -
 rm -rf /zpool1/test_gzip-9/War_and_Peace.txt
 Загруженность CPU: 87%
 Время выполнения: 0.00 сек
+Время выполнения: 83.56 сек
+===========zpool1/test_gzip-9===========
+Информация о команде:
+cp -r /tmp/linux-5.19.4 /zpool1/test_gzip-9
+Загруженность CPU: 20%
+Время выполнения: 77.17 сек
+NAME                PROPERTY       VALUE  SOURCE
+zpool1/test_gzip-9  compressratio  4.82x  -
+Filesystem          Size  Used Avail Use% Mounted on
+zpool1/test_gzip-9  830M  282M  549M  34% /zpool1/test_gzip-9
+Информация о команде:
+rm -rf /zpool1/test_gzip-9/linux-5.19.4
+Загруженность CPU: 5%
+Время выполнения: 83.56 сек
 
 ```
 
@@ -81,32 +95,20 @@ zpool1/test_zstd    compressratio  2.59x  -
 rm -rf /zpool1/test_zstd/War_and_Peace.txt
 Загруженность CPU: 88%
 Время выполнения: 0.00 сек
-===========zpool1/test_gzip-9===========
+===========zpool1/test_zstd===========
 Информация о команде:
-cp -r /tmp/linux-5.19.4 /zpool1/test_gzip-9
-Загруженность CPU: 20%
-Время выполнения: 77.17 сек
+cp -r /tmp/linux-5.19.4 /zpool1/test_zstd
+Загруженность CPU: 35%
+Время выполнения: 46.18 сек
 NAME                PROPERTY       VALUE  SOURCE
-zpool1/test_gzip-9  compressratio  4.82x  -
+zpool1/test_zstd    compressratio  4.51x  -
 Filesystem          Size  Used Avail Use% Mounted on
-zpool1/test_gzip-9  830M  282M  549M  34% /zpool1/test_gzip-9
+zpool1/test_zstd    824M  300M  525M  37% /zpool1/test_zstd
 Информация о команде:
-rm -rf /zpool1/test_gzip-9/linux-5.19.4
+rm -rf /zpool1/test_zstd/linux-5.19.4
 Загруженность CPU: 5%
-Время выполнения: 83.56 сек
-===========zpool1/test_gzip-9===========
-Информация о команде:
-cp -r /tmp/linux-5.19.4 /zpool1/test_gzip-9
-Загруженность CPU: 20%
-Время выполнения: 77.17 сек
-NAME                PROPERTY       VALUE  SOURCE
-zpool1/test_gzip-9  compressratio  4.82x  -
-Filesystem          Size  Used Avail Use% Mounted on
-zpool1/test_gzip-9  830M  282M  549M  34% /zpool1/test_gzip-9
-Информация о команде:
-rm -rf /zpool1/test_gzip-9/linux-5.19.4
-Загруженность CPU: 5%
-Время выполнения: 83.56 сек
+Время выполнения: 86.24 сек
+
 ```
 что особенно хорошо видно на разархивированном ядре
 подробно можно изучить в логфайле `test_algo.log` 
