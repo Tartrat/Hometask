@@ -1,0 +1,151 @@
+===========zpool1/test_gzip===========
+Информация о команде:
+cp -r /tmp/War_and_Peace.txt /zpool1/test_gzip
+Загруженность CPU: 50%
+Время выполнения: 0.00 сек
+NAME                PROPERTY       VALUE  SOURCE
+zpool1/test_gzip    compressratio  2.67x  -
+1.3M	/zpool1/test_gzip/War_and_Peace.txt
+Информация о команде:
+rm -rf /zpool1/test_gzip/War_and_Peace.txt
+Загруженность CPU: 83%
+Время выполнения: 0.00 сек
+===========zpool1/test_gzip-9===========
+Информация о команде:
+cp -r /tmp/War_and_Peace.txt /zpool1/test_gzip-9
+Загруженность CPU: 100%
+Время выполнения: 0.00 сек
+NAME                PROPERTY       VALUE  SOURCE
+zpool1/test_gzip-9  compressratio  2.67x  -
+1.3M	/zpool1/test_gzip-9/War_and_Peace.txt
+Информация о команде:
+rm -rf /zpool1/test_gzip-9/War_and_Peace.txt
+Загруженность CPU: 87%
+Время выполнения: 0.00 сек
+===========zpool1/test_zle===========
+Информация о команде:
+cp -r /tmp/War_and_Peace.txt /zpool1/test_zle
+Загруженность CPU: 50%
+Время выполнения: 0.00 сек
+NAME                PROPERTY       VALUE  SOURCE
+zpool1/test_zle     compressratio  1.01x  -
+3.3M	/zpool1/test_zle/War_and_Peace.txt
+Информация о команде:
+rm -rf /zpool1/test_zle/War_and_Peace.txt
+Загруженность CPU: 87%
+Время выполнения: 0.00 сек
+===========zpool1/test_lzjb===========
+Информация о команде:
+cp -r /tmp/War_and_Peace.txt /zpool1/test_lzjb
+Загруженность CPU: 50%
+Время выполнения: 0.00 сек
+NAME                PROPERTY       VALUE  SOURCE
+zpool1/test_lzjb    compressratio  1.36x  -
+2.4M	/zpool1/test_lzjb/War_and_Peace.txt
+Информация о команде:
+rm -rf /zpool1/test_lzjb/War_and_Peace.txt
+Загруженность CPU: 87%
+Время выполнения: 0.00 сек
+===========zpool1/test_lz4===========
+Информация о команде:
+cp -r /tmp/War_and_Peace.txt /zpool1/test_lz4
+Загруженность CPU: 100%
+Время выполнения: 0.00 сек
+NAME                PROPERTY       VALUE  SOURCE
+zpool1/test_lz4     compressratio  1.63x  -
+2.0M	/zpool1/test_lz4/War_and_Peace.txt
+Информация о команде:
+rm -rf /zpool1/test_lz4/War_and_Peace.txt
+Загруженность CPU: 88%
+Время выполнения: 0.00 сек
+===========zpool1/test_zstd===========
+Информация о команде:
+cp -r /tmp/War_and_Peace.txt /zpool1/test_zstd
+Загруженность CPU: 100%
+Время выполнения: 0.00 сек
+NAME                PROPERTY       VALUE  SOURCE
+zpool1/test_zstd    compressratio  2.59x  -
+1.3M	/zpool1/test_zstd/War_and_Peace.txt
+Информация о команде:
+rm -rf /zpool1/test_zstd/War_and_Peace.txt
+Загруженность CPU: 87%
+Время выполнения: 0.00 сек
+===========zpool1/test_gzip===========
+Информация о команде:
+cp -r /tmp/linux-5.19.4 /zpool1/test_gzip
+Загруженность CPU: 28%
+Время выполнения: 57.94 сек
+NAME                PROPERTY       VALUE  SOURCE
+zpool1/test_gzip    compressratio  4.76x  -
+Filesystem          Size  Used Avail Use% Mounted on
+zpool1/test_gzip    832M  286M  546M  35% /zpool1/test_gzip
+Информация о команде:
+rm -rf /zpool1/test_gzip/linux-5.19.4
+Загруженность CPU: 5%
+Время выполнения: 86.53 сек
+===========zpool1/test_gzip-9===========
+Информация о команде:
+cp -r /tmp/linux-5.19.4 /zpool1/test_gzip-9
+Загруженность CPU: 21%
+Время выполнения: 76.87 сек
+NAME                PROPERTY       VALUE  SOURCE
+zpool1/test_gzip-9  compressratio  4.81x  -
+Filesystem          Size  Used Avail Use% Mounted on
+zpool1/test_gzip-9  831M  284M  547M  35% /zpool1/test_gzip-9
+Информация о команде:
+rm -rf /zpool1/test_gzip-9/linux-5.19.4
+Загруженность CPU: 5%
+Время выполнения: 83.21 сек
+===========zpool1/test_zle===========
+Command exited with non-zero status 1
+Информация о команде:
+cp -r /tmp/linux-5.19.4 /zpool1/test_zle
+Загруженность CPU: 6%
+Время выполнения: 168.30 сек
+NAME                PROPERTY       VALUE  SOURCE
+zpool1/test_zle     compressratio  1.07x  -
+Filesystem          Size  Used Avail Use% Mounted on
+zpool1/test_zle     828M  828M  512K 100% /zpool1/test_zle
+Информация о команде:
+rm -rf /zpool1/test_zle/linux-5.19.4
+Загруженность CPU: 1%
+Время выполнения: 213.86 сек
+===========zpool1/test_lzjb===========
+Информация о команде:
+cp -r /tmp/linux-5.19.4 /zpool1/test_lzjb
+Загруженность CPU: 36%
+Время выполнения: 44.25 сек
+NAME                PROPERTY       VALUE  SOURCE
+zpool1/test_lzjb    compressratio  2.65x  -
+Filesystem          Size  Used Avail Use% Mounted on
+zpool1/test_lzjb    827M  500M  327M  61% /zpool1/test_lzjb
+Информация о команде:
+rm -rf /zpool1/test_lzjb/linux-5.19.4
+Загруженность CPU: 4%
+Время выполнения: 90.74 сек
+===========zpool1/test_lz4===========
+Информация о команде:
+cp -r /tmp/linux-5.19.4 /zpool1/test_lz4
+Загруженность CPU: 37%
+Время выполнения: 43.90 сек
+NAME                PROPERTY       VALUE  SOURCE
+zpool1/test_lz4     compressratio  3.05x  -
+Filesystem          Size  Used Avail Use% Mounted on
+zpool1/test_lz4     825M  435M  390M  53% /zpool1/test_lz4
+Информация о команде:
+rm -rf /zpool1/test_lz4/linux-5.19.4
+Загруженность CPU: 4%
+Время выполнения: 90.89 сек
+===========zpool1/test_zstd===========
+Информация о команде:
+cp -r /tmp/linux-5.19.4 /zpool1/test_zstd
+Загруженность CPU: 36%
+Время выполнения: 44.64 сек
+NAME                PROPERTY       VALUE  SOURCE
+zpool1/test_zstd    compressratio  4.52x  -
+Filesystem          Size  Used Avail Use% Mounted on
+zpool1/test_zstd    823M  301M  522M  37% /zpool1/test_zstd
+Информация о команде:
+rm -rf /zpool1/test_zstd/linux-5.19.4
+Загруженность CPU: 4%
+Время выполнения: 86.88 сек

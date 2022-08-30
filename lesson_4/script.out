@@ -1,0 +1,161 @@
+Script started on 2022-08-30 21:11:56+00:00
+]0;vagrant@server:~[vagrant@server ~]$ tar -xf /tmp/zfs_task1.tar.gz  -C /tmp/
+]0;vagrant@server:~[vagrant@server ~]$ zpool import -d /tmp/zpoolexport/
+cannot discover pools: permission denied
+]0;vagrant@server:~[vagrant@server ~]$ sudo -s
+]0;root@server:/home/vagrant[root@server vagrant]# zpool import -d /tmp/zpoolexport/
+   pool: otus
+     id: 6554193320433390805
+  state: ONLINE
+status: Some supported features are not enabled on the pool.
+ action: The pool can be imported using its name or numeric identifier, though
+	some features will not be available without an explicit 'zpool upgrade'.
+ config:
+
+	otus                        ONLINE
+	  mirror-0                  ONLINE
+	    /tmp/zpoolexport/filea  ONLINE
+	    /tmp/zpoolexport/fileb  ONLINE
+]0;root@server:/home/vagrant[root@server vagrant]# zpool import -d /tmp/zpoolexport/ otus
+]0;root@server:/home/vagrant[root@server vagrant]# zpool list
+NAME     SIZE  ALLOC   FREE  CKPOINT  EXPANDSZ   FRAG    CAP  DEDUP    HEALTH  ALTROOT
+otus     480M  2.21M   478M        -         -     0%     0%  1.00x    ONLINE  -
+zpool1   960M  6.35M   954M        -         -     2%     0%  1.00x    ONLINE  -
+]0;root@server:/home/vagrant[root@server vagrant]# zpool status otus
+  pool: otus
+ state: ONLINE
+status: Some supported features are not enabled on the pool. The pool can
+	still be used, but some features are unavailable.
+action: Enable all features using 'zpool upgrade'. Once this is done,
+	the pool may no longer be accessible by software that does not support
+	the features. See zpool-features(5) for details.
+config:
+
+	NAME                        STATE     READ WRITE CKSUM
+	otus                        ONLINE       0     0     0
+	  mirror-0                  ONLINE       0     0     0
+	    /tmp/zpoolexport/filea  ONLINE       0     0     0
+	    /tmp/zpoolexport/fileb  ONLINE       0     0     0
+
+errors: No known data errors
+]0;root@server:/home/vagrant[root@server vagrant]# zfs get recordsize otus
+NAME  PROPERTY    VALUE    SOURCE
+otus  recordsize  128K     local
+]0;root@server:/home/vagrant[root@server vagrant]# zfs get compression otus
+NAME  PROPERTY     VALUE           SOURCE
+otus  compression  zle             local
+]0;root@server:/home/vagrant[root@server vagrant]# zfs get checksum otus
+NAME  PROPERTY  VALUE      SOURCE
+otus  checksum  sha256     local
+]0;root@server:/home/vagrant[root@server vagrant]# zpool history
+History for 'otus':
+2020-05-15.04:00:58 zpool create otus mirror /root/filea /root/fileb
+2020-05-15.04:04:57 zfs set recordsize=128K otus
+2020-05-15.04:05:55 zfs set checksum=sha256 otus
+2020-05-15.04:11:05 zfs set compression=zle otus
+2020-05-15.04:18:42 zfs create otus/hometask2
+2020-05-15.04:35:03 zpool export otus
+2020-05-15.04:43:30 zpool import otus -d /root/zpoolexport/
+2020-05-15.04:56:44 zpool import -d zpoolexport/ otus
+2020-05-15.05:00:06 zpool export otus
+2022-08-30.21:12:33 zpool import -d /tmp/zpoolexport/ otus
+
+History for 'zpool1':
+2022-08-30.21:04:52 zpool create zpool1 mirror /dev/sdb /dev/sdc
+2022-08-30.21:06:55 zfs create zpool1/test_gzip
+2022-08-30.21:06:55 zfs create zpool1/test_gzip-9
+2022-08-30.21:06:55 zfs create zpool1/test_zle
+2022-08-30.21:06:55 zfs create zpool1/test_lzjb
+2022-08-30.21:06:55 zfs create zpool1/test_lz4
+2022-08-30.21:07:00 zfs create zpool1/test_zstd
+2022-08-30.21:07:44 zfs set compression=gzip zpool1/test_gzip
+2022-08-30.21:07:44 zfs set compression=gzip-9 zpool1/test_gzip-9
+2022-08-30.21:07:45 zfs set compression=zle zpool1/test_zle
+2022-08-30.21:07:45 zfs set compression=lzjb zpool1/test_lzjb
+2022-08-30.21:07:45 zfs set compression=lz4 zpool1/test_lz4
+2022-08-30.21:07:50 zfs set compression=zstd zpool1/test_zstd
+
+]0;root@server:/home/vagrant[root@server vagrant]# zfs get all|grep "otus "
+[01;31m[Kotus [m[K               type                  filesystem             -
+[01;31m[Kotus [m[K               creation              Fri May 15  4:00 2020  -
+[01;31m[Kotus [m[K               used                  2.04M                  -
+[01;31m[Kotus [m[K               available             350M                   -
+[01;31m[Kotus [m[K               referenced            24K                    -
+[01;31m[Kotus [m[K               compressratio         1.00x                  -
+[01;31m[Kotus [m[K               mounted               yes                    -
+[01;31m[Kotus [m[K               quota                 none                   default
+[01;31m[Kotus [m[K               reservation           none                   default
+[01;31m[Kotus [m[K               recordsize            128K                   local
+[01;31m[Kotus [m[K               mountpoint            /[01;31m[Kotus [m[K                 default
+[01;31m[Kotus [m[K               sharenfs              off                    default
+[01;31m[Kotus [m[K               checksum              sha256                 local
+[01;31m[Kotus [m[K               compression           zle                    local
+[01;31m[Kotus [m[K               atime                 on                     default
+[01;31m[Kotus [m[K               devices               on                     default
+[01;31m[Kotus [m[K               exec                  on                     default
+[01;31m[Kotus [m[K               setuid                on                     default
+[01;31m[Kotus [m[K               readonly              off                    default
+[01;31m[Kotus [m[K               zoned                 off                    default
+[01;31m[Kotus [m[K               snapdir               hidden                 default
+[01;31m[Kotus [m[K               aclmode               discard                default
+[01;31m[Kotus [m[K               aclinherit            restricted             default
+[01;31m[Kotus [m[K               createtxg             1                      -
+[01;31m[Kotus [m[K               canmount              on                     default
+[01;31m[Kotus [m[K               xattr                 on                     default
+[01;31m[Kotus [m[K               copies                1                      default
+[01;31m[Kotus [m[K               version               5                      -
+[01;31m[Kotus [m[K               utf8only              off                    -
+[01;31m[Kotus [m[K               normalization         none                   -
+[01;31m[Kotus [m[K               casesensitivity       sensitive              -
+[01;31m[Kotus [m[K               vscan                 off                    default
+[01;31m[Kotus [m[K               nbmand                off                    default
+[01;31m[Kotus [m[K               sharesmb              off                    default
+[01;31m[Kotus [m[K               refquota              none                   default
+[01;31m[Kotus [m[K               refreservation        none                   default
+[01;31m[Kotus [m[K               guid                  14592242904030363272   -
+[01;31m[Kotus [m[K               primarycache          all                    default
+[01;31m[Kotus [m[K               secondarycache        all                    default
+[01;31m[Kotus [m[K               usedbysnapshots       0B                     -
+[01;31m[Kotus [m[K               usedbydataset         24K                    -
+[01;31m[Kotus [m[K               usedbychildren        2.01M                  -
+[01;31m[Kotus [m[K               usedbyrefreservation  0B                     -
+[01;31m[Kotus [m[K               logbias               latency                default
+[01;31m[Kotus [m[K               objsetid              54                     -
+[01;31m[Kotus [m[K               dedup                 off                    default
+[01;31m[Kotus [m[K               mlslabel              none                   default
+[01;31m[Kotus [m[K               sync                  standard               default
+[01;31m[Kotus [m[K               dnodesize             legacy                 default
+[01;31m[Kotus [m[K               refcompressratio      1.00x                  -
+[01;31m[Kotus [m[K               written               24K                    -
+[01;31m[Kotus [m[K               logicalused           1020K                  -
+[01;31m[Kotus [m[K               logicalreferenced     12K                    -
+[01;31m[Kotus [m[K               volmode               default                default
+[01;31m[Kotus [m[K               filesystem_limit      none                   default
+[01;31m[Kotus [m[K               snapshot_limit        none                   default
+[01;31m[Kotus [m[K               filesystem_count      none                   default
+[01;31m[Kotus [m[K               snapshot_count        none                   default
+[01;31m[Kotus [m[K               snapdev               hidden                 default
+[01;31m[Kotus [m[K               acltype               off                    default
+[01;31m[Kotus [m[K               context               none                   default
+[01;31m[Kotus [m[K               fscontext             none                   default
+[01;31m[Kotus [m[K               defcontext            none                   default
+[01;31m[Kotus [m[K               rootcontext           none                   default
+[01;31m[Kotus [m[K               relatime              off                    default
+[01;31m[Kotus [m[K               redundant_metadata    all                    default
+[01;31m[Kotus [m[K               overlay               on                     default
+[01;31m[Kotus [m[K               encryption            off                    default
+[01;31m[Kotus [m[K               keylocation           none                   default
+[01;31m[Kotus [m[K               keyformat             none                   default
+[01;31m[Kotus [m[K               pbkdf2iters           0                      default
+[01;31m[Kotus [m[K               special_small_blocks  0                      default
+]0;root@server:/home/vagrant[root@server vagrant]# zfs get all|grep "otus "|grep compression
+otus                [01;31m[Kcompression[m[K           zle                    local
+]0;root@server:/home/vagrant[root@server vagrant]# zfs get all|grep "otus "|grep recordsize
+otus                [01;31m[Krecordsize[m[K            128K                   local
+]0;root@server:/home/vagrant[root@server vagrant]# zfs get all|grep "otus "|grep checksum
+otus                [01;31m[Kchecksum[m[K              sha256                 local
+]0;root@server:/home/vagrant[root@server vagrant]# exit
+]0;vagrant@server:~[vagrant@server ~]$ exit
+exit
+
+Script done on 2022-08-30 21:13:28+00:00

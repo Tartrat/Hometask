@@ -1,0 +1,13 @@
+Script started on 2022-08-30 21:16:10+00:00
+]0;vagrant@server:~[vagrant@server ~]$ sudo -s
+]0;root@server:/home/vagrant[root@server vagrant]# zfs receive otus/storage@task2 < /tmp/otus_task2.file
+]0;root@server:/home/vagrant[root@server vagrant]# find /otus/ -name secret_message
+/otus/storage/task1/file_mess/secret_message
+]0;root@server:/home/vagrant[root@server vagrant]# cat /otus/storage/task1/file_mess/secret_message
+https://github.com/sindresorhus/awesome
+]0;root@server:/home/vagrant[root@server vagrant]# exit
+exit
+]0;vagrant@server:~[vagrant@server ~]$ exit
+exit
+
+Script done on 2022-08-30 21:16:52+00:00
