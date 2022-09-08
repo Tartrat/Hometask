@@ -2,8 +2,8 @@
 fs=$(df -h |grep "zpool1/"|awk '{print $1}') 
 for i in ${fs[@]}  
  do 
-	echo "===========$i==========="|tee -a /home/vagrant/test_algo.log && /usr/bin/time -a -o /home/vagrant/test_algo.log  -f "à≠‰Æ‡¨†Ê®Ô Æ ™Æ¨†≠§•:\n%C\ná†£‡„¶•≠≠Æ·‚Ï CPU: %P\nÇ‡•¨Ô ¢ÎØÆ´≠•≠®Ô: %e ·•™"  cp -r  /tmp/linux-5.19.4 /$i |tee -a /home/vagrant/test_algo.log 
+	echo "===========$i==========="|tee -a /home/vagrant/test_algo.log && /usr/bin/time -a -o /home/vagrant/test_algo.log  -f "–ò–Ω—Ñ–æ—Ä–º–∞—Ü–∏—è –æ –∫–æ–º–∞–Ω–¥–µ:\n%C\n–ó–∞–≥—Ä—É–∂–µ–Ω–Ω–æ—Å—Ç—å CPU: %P\n–í—Ä–µ–º—è –≤—ã–ø–æ–ª–Ω–µ–Ω–∏—è: %e —Å–µ–∫"  cp -r  /tmp/linux-5.19.4 /$i |tee -a /home/vagrant/test_algo.log 
 	zfs get compressratio|grep "NAME\|$i " |tee -a /home/vagrant/test_algo.log 
 	df -h|grep "Filesystem\|$i "|tee -a /home/vagrant/test_algo.log 
-	/usr/bin/time -a -o /home/vagrant/test_algo.log  -f "à≠‰Æ‡¨†Ê®Ô Æ ™Æ¨†≠§•:\n%C\ná†£‡„¶•≠≠Æ·‚Ï CPU: %P\nÇ‡•¨Ô ¢ÎØÆ´≠•≠®Ô: %e ·•™" rm -rf /$i/linux-5.19.4|tee -a /home/vagrant/test_algo.log 
+	/usr/bin/time -a -o /home/vagrant/test_algo.log  -f "–ò–Ω—Ñ–æ—Ä–º–∞—Ü–∏—è –æ –∫–æ–º–∞–Ω–¥–µ:\n%C\n–ó–∞–≥—Ä—É–∂–µ–Ω–Ω–æ—Å—Ç—å CPU: %P\n–í—Ä–µ–º—è –≤—ã–ø–æ–ª–Ω–µ–Ω–∏—è: %e —Å–µ–∫" rm -rf /$i/linux-5.19.4|tee -a /home/vagrant/test_algo.log 
  done

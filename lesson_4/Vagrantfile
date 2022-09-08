@@ -40,31 +40,4 @@ config.vm.define "server" do |server|
 		wget -O /tmp/otus_task2.file 'https://drive.google.com/uc?export=download&id=1gH8gCL9y7Nd5Ti3IRmplZPF1XjzxeRAG'
 	SHELL
   end
-
-
-# Cent OS 8.2
-# config used from this
-# https://github.com/eoli3n/vagrant-pxe/blob/master/client/Vagrantfile
-  config.vm.define "client" do |client|
-    client.vm.provider :virtualbox do |vb|
-      vb.memory = "1024"
-      vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
-    end
-	
-    client.vm.host_name = 'client'
-    client.vm.network :private_network, ip: "10.0.0.40"
-    client.vm.disk :disk, size: "1GB", name: "disk1"
-    client.vm.disk :disk, size: "1GB", name: "disk2"
-    client.vm.disk :disk, size: "1GB", name: "disk3"
-
-	client.vm.provision "shell", inline: <<-SHELL
-		cd /etc/yum.repos.d/
-		sed -i 's/mirrorlist/#mirrorlist/g' /etc/yum.repos.d/CentOS-*
-		sed -i 's|#baseurl=http://mirror.centos.org|baseurl=http://vault.centos.org|g' /etc/yum.repos.d/CentOS-*
-		touch /etc/profile.d/histtimeformat.sh
-		echo "export HISTTIMEFORMAT='[ %d/%m/%y %T ]'">> /etc/profile.d/histtimeformat.sh
-		yum install -y mc wget
-	SHELL
-  end
-
 end
